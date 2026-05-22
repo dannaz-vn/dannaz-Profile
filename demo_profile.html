@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dannaz | Bio Link</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #110c24, #05030a);
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Hiệu ứng Liquid Glass */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hiệu ứng Avatar phát sáng (Glow) */
+        .avatar-glow {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4),
+                        inset 0 0 10px rgba(168, 85, 247, 0.2);
+            border: 2px solid rgba(168, 85, 247, 0.6);
+        }
+
+        /* Nút bấm mạng xã hội xếp dọc, hover phóng to, click nảy */
+        .social-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .social-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Canvas cho hiệu ứng đốm sáng rơi lấp lánh */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Nút điều khiển nhạc mờ mờ ở góc */
+        .music-control {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-200 min-h-screen flex items-center justify-center p-4 relative">
+
+    <canvas id="particles-canvas"></canvas>
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.discordapp.com/attachments/1315685783717285909/1507347800046829588/2g_-_LY_LU_CA_prod._HUY_OUK__HUYNH_HIEU_LAM.mp3?ex=6a119288&is=6a104108&hm=a6940c2e15f195bf95c4497159c8da42d275c1c4a1a297c0498cfc9258a0d762&" type="audio/mpeg">
+    </audio>
+
+    <div class="fixed top-4 right-4 z-50">
+        <button id="music-toggle" class="music-control w-10 h-10 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-colors text-sm">
+            <i id="music-icon" class="fa-solid fa-music animate-pulse"></i>
+        </button>
+    </div>
+
+    <div class="main-container w-full max-w-md liquid-glass rounded-[2rem] p-8 text-center">
+        
+        <div class="relative w-24 h-24 mx-auto mb-5">
+            <img src="https://media.discordapp.net/attachments/1315685783717285909/1507348976008036372/Avt__30.jpg?ex=6a1193a1&is=6a104221&hm=2fb6030c16af8b56443df0c6e7d6cc869e36344b37a252c9301045ed312e0d93&=&format=webp&width=527&height=527" 
+                 alt="Avatar" 
+                 class="w-full h-full rounded-full object-cover avatar-glow">
+            <div class="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-[#110c24] rounded-full"></div>
+        </div>
+
+        <h1 class="text-2xl font-bold tracking-tight text-white mb-1">dannaz</h1>
+        <p class="text-sm text-purple-300/80 font-medium mb-8">here's my profile</p>
+
+        <div class="space-y-4">
+            
+            <a href="https://discord.gg/yourserver" target="_blank" class="social-btn flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 text-slate-200 group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                        <i class="fa-brands fa-discord text-xl"></i>
+                    </div>
+                    <span class="font-medium text-sm">Discord Server</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-slate-300 transition-colors mr-1"></i>
+            </a>
+
+            <a href="https://www.facebook.com/nguyen.thanh.dinh.1361/?locale=vi_VN" target="_blank" class="social-btn flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 text-slate-200 group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:text-blue-300 transition-colors">
+                        <i class="fa-brands fa-facebook-f text-lg"></i>
+                    </div>
+                    <span class="font-medium text-sm">Facebook</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-slate-300 transition-colors mr-1"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@dannaz_vn" target="_blank" class="social-btn flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 text-slate-200 group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-slate-500/10 border border-white/10 flex items-center justify-center text-white group-hover:text-slate-300 transition-colors">
+                        <i class="fa-brands fa-tiktok text-lg"></i>
+                    </div>
+                    <span class="font-medium text-sm">TikTok</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-slate-300 transition-colors mr-1"></i>
+            </a>
+
+            <a href="https://mobile.capcutshare.com/sv2/ZSxyPWd6c/" target="_blank" class="social-btn flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 text-slate-200 group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                        <i class="fa-solid fa-video text-base"></i>
+                    </div>
+                    <span class="font-medium text-sm">CapCut Templates</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-slate-300 transition-colors mr-1"></i>
+            </a>
+
+            <a href="https://open.spotify.com/user/yourprofile" target="_blank" class="social-btn flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 text-slate-200 group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 group-hover:text-green-300 transition-colors">
+                        <i class="fa-brands fa-spotify text-xl"></i>
+                    </div>
+                    <span class="font-medium text-sm">Spotify Playlist</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-slate-300 transition-colors mr-1"></i>
+            </a>
+
+        </div>
+
+        <p class="text-[11px] text-slate-600 mt-8 tracking-wider uppercase">designed by Gemini for dannaz</p>
+    </div>
+
+    <script>
+        // --- 1. HIỆU ỨNG ĐỐM SÁNG RƠI LẤP LÁNH (PARTICLES) ---
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const numberOfParticles = 60;
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 + 0.2; // Rơi xuống nhẹ nhàng
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = '#a855f7'; // Đốm màu tím nhẹ lấp lánh
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#a855f7';
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // --- 2. XỬ LÝ TỰ ĐỘNG PHÁT NHẠC (AUTOPLAY BẬT SẴN) ---
+        const music = document.getElementById('bg-music');
+        const toggleBtn = document.getElementById('music-toggle');
+        const icon = document.getElementById('music-icon');
+
+        // Do chính sách bảo mật của các trình duyệt hiện đại, nhạc chỉ phát tự động
+        // ngay khi người dùng click bất kỳ đâu trên màn hình lần đầu tiên.
+        function attemptAutoplay() {
+            music.play().then(() => {
+                icon.classList.add('fa-spin'); // Nhạc chạy thì icon quay mượt
+                document.removeEventListener('click', attemptAutoplay);
+            }).catch(error => {
+                console.log("Trình duyệt chặn tự động phát, chờ tương tác người dùng...");
+            });
+        }
+        
+        document.addEventListener('click', attemptAutoplay);
+
+        // Nút bấm bật tắt nhạc thủ công
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Không kích hoạt cái click toàn trang ở trên
+            if (music.paused) {
+                music.play();
+                icon.className = 'fa-solid fa-music fa-spin text-purple-400';
+            } else {
+                music.pause();
+                icon.className = 'fa-solid fa-music text-white/50';
+            }
+        });
+    </script>
+</body>
+</html>
